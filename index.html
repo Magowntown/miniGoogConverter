@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Google Converter Clone</title>
+</head>
+
+<!-- Allow for the following conversions:
+
+Length: km -> miles
+Fuel Economy: Kilometer per liter -> Miles per gallon
+Digital Storage: Byte -> Kilobyte -->
+
+<body class="bg-white">
+    <div id="container" class="flex">
+        <div id="header" class="mx-auto">
+            <h1 class="flex-auto">Google Converter Clone</h1>
+        </div>
+        <!-- Dropdown select for measurement type -->
+
+        <div class="dropdown">
+            <select name="measurement" id="measurement">
+                <option value="length">Length</option>
+                <option value="fuel">Fuel Economy</option>
+                <option value="storage">Digital Storage</option>
+            </select>
+        </div>
+
+        <div class="main">
+            <div class="input">
+                <input type="text" id="input" placeholder="Enter a value">
+            </div>
+            <div id="length-select">
+                <select name="unit" id="distanceUnit">
+                    <option value="km">Kilometer</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>
+            <div id="fuel-select">
+                <select name="" id="gasUnit">
+                    <option value="kmpl">Kilometer per liter</option>
+                    <option value="mpg">Miles per gallon</option>
+                </select>
+            </div>
+            <div id="storage-select">
+                <select name="" id="storageUnit">
+                    <option value="byte">Byte</option>
+                    <option value="kb">Kilobyte</option>
+                </select>
+
+                <!-- Have output show what type of converted type is shown -->
+
+                <div class="output">
+                    <input type="text" id="output" placeholder="Result" disabled>
+                </div>
+
+                <!-- Have a button that will convert the input value to the selected unit -->
+
+                <div class="button">
+                    <button id="convert">Convert</button>
+                </div>
+
+                <!-- Have a button that will clear the input and output fields -->
+
+                <div class="button">
+                    <button id="clear">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
