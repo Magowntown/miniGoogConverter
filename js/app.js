@@ -1,20 +1,88 @@
-// Allow for the following conversions:
+window.onload = function () {
+  document.getElementById("clear").addEventListener("click", clearValues);
+  document
+    .getElementById("measurement")
+    .addEventListener("change", updateSelectOptions);
+  document.getElementById("inputBox").addEventListener("input", convertValue);
+  updateSelectOptions();
+};
 
-// Length: km -> miles
-// Fuel Economy: Kilometer per liter -> Miles per gallon
-// Digital Storage: Byte -> Kilobyte
+function updateSelectOptions() {
+  const measurement = document.getElementById("measurement").value.trim();
+  let selectElementId = "";
+  let options = [];
 
-// 1 kilometer = 0.621371 miles
-// 1 kilometer per liter = 2.352145833 miles per gallon
-// 1 byte = 0.0009765625 kilobytes
+  switch (measurement) {
+    case "length":
+      selectElementId = "distanceUnit";
+      options = [
+        { value: "km", text: "Kilometer" },
+        { value: "miles", text: "Miles" },
+      ];
+      break;
+    case "fuel":
+      selectElementId = "gasUnit";
+      options = [
+        { value: "kmpl", text: "Kilometer per liter" },
+        { value: "mpg", text: "Miles per gallon" },
+      ];
+      break;
+    case "storage":
+      selectElementId = "storageUnit";
+      options = [
+        { value: "byte", text: "Byte" },
+        { value: "kb", text: "Kilobyte" },
+      ];
+      break;
+  }
 
-// 1. Create a function that will convert from one unit of measure to another.
-// 2. Create a second function that will determine which conversion function to call based on the user's selection.
-// 3. Create a third function that will capture the user's input and display the results of the conversion.
+  let selectElement = document.getElementById(selectElementId);
+  selectElement.innerHTML = "";
+  options.forEach((option) => {
+    let optionElement = document.createElement("option");
+    optionElement.value = option.value;
+    optionElement.text = option.text;
+    selectElement.appendChild(optionElement);
+  });
+  selectElement.addEventListener("change", convertValue);
+}
 
-// 1. Create a function that will convert from one unit of measure to another.
-function convertLength() {
-  var km = document.getElementById("input").value;
-  var miles = km * 0.621371;
-  document.getElementById("output").innerHTML = miles;
+function convertValue() {
+  let inputValue = document.getElementById("inputBox").value;
+  let measurement = document.getElementById("measurement").value.trim();
+  let unitElementId =
+    measurement === "length"
+      ? "distanceUnit"
+      : measurement === "fuel"
+      ? "gasUnit"
+      : "storageUnit";
+  let unit = document.getElementById(unitElementId).value;
+  let convertedValue = 0;
+
+  if (measurement === "length") {
+    if (unit === "km") {
+      convertedValue = inputValue / 1.60934;
+    } else {
+      convertedValue = inputValue * 1.60934;
+    }
+  } else if (measurement === "fuel") {
+    if (unit === "kmpl") {
+      convertedValue = inputValue * 2.35214;
+    } else {
+      convertedValue = inputValue / 2.35214;
+    }
+  } else {
+    if (unit === "byte") {
+      convertedValue = inputValue / 1024;
+    } else {
+      convertedValue = inputValue * 1024;
+    }
+  }
+
+  document.getElementById("output").value = convertedValue;
+}
+
+function clearValues() {
+  document.getElementById("inputBox").value = "";
+  document.getElementById("output").value = "";
 }
