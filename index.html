@@ -18,7 +18,7 @@
 
         <div id="converterBox" class="flex flex-col w-full">
             <div id="dropdown" class="w-full">
-                <select name="measurement" id="measurementOption" for="inputSelect">
+                <select name="measurement" id="measurementOptions" for="inputSelect">
                     <option id="lengthOption" value="length">Length</option>
                     <option id="FuelOption" value="fuel">Fuel Economy</option>
                     <option id="digitalOption" value="storage">Digital Storage</option>
@@ -28,9 +28,9 @@
                 <div class="inputOneContainer w-1/2 px-2">
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
-                        id="inputOne" type="number" placeholder="Enter a value">
-                    <div>
-                        <select name="unitType" id="unitTypeOne" class="w-full"></select>
+                        id="input" type="number" placeholder="Enter a value">
+                    <div id="selectTypeOne">
+                        <select name="inputType" id="inputType" class="w-full"></select>
                     </div>
                 </div>
                 <div id="equalSign" class="flex justify-center">
@@ -40,9 +40,9 @@
                 <div class="inputTwoContainer w-1/2 px-2">
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
-                        id="inputTwo" type="number" placeholder="wait for result">
-                    <div>
-                        <select name="unitType" id="unitTypeTwo" class="w-full"></select>
+                        id="result" type="number" placeholder="wait for result">
+                    <div id="selectTypeTwo">
+                        <select name="unitType" id="resultType" class="w-full"></select>
                     </div>
                 </div>
             </div>
