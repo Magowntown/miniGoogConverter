@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Google Converter Clone</title>
+</head>
+
+<body class="bg-gray-200 h-screen flex items-center justify-center">
+
+    <div id="windowContainer" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xl">
+        <div id="header" class="mx-auto text-center">
+            <h1 class="flex-auto">Google Converter Clone</h1>
+        </div>
+        <!-- Converter Container -->
+        <div id="converterBox" class="flex flex-col w-full">
+            <!-- Measurement Dropdown Selection Outer Div-->
+            <div id="dropdown" class="w-full">
+                <label for="measurementOptions">Choose a measurement</label>
+                <!-- Measurement Select Options -->
+                <select name="measurement" id="measurementOptions" for="inputSelect">
+                    <option id="lengthOption" value="length">Length</option>
+                    <option id="FuelOption" value="fuel">Fuel Economy</option>
+                    <option id="digitalOption" value="storage">Digital Storage</option>
+                    <option id="temperatureOption" value="temperature">Temperature</option>
+                    <option id="massOption" value="mass">Mass</option>
+                    <option id="speedOption" value="speed">Speed</option>
+                    <option id="areaOption" value="area">Area</option>
+                    <option id="volumeOption" value="volume">Volume</option>
+                    <option id="pressureOption" value="pressure">Pressure</option>
+                    <option id="energyOption" value="energy">Energy</option>
+                    <option id="densityOption" value="density">Density</option>
+                </select>
+            </div>
+
+            <!-- Converter Input Container -->
+            <div id="converters" class="flex justify-evenly w-full">
+                <!-- Input Box -->
+                <div class="inputOneContainer w-1/2 px-2">
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
+                        id="input" type="number" placeholder="Enter a value">
+                    <!-- Select Options via. Measurement Selection -->
+                    <div id="selectTypeOne">
+                        <!-- New Options JS Generated -->
+                        <select name="inputType" id="inputType" class="w-full"></select>
+                    </div>
+                </div>
+
+                <!-- Equal Sign Divider -->
+                <div id="equalSign" class="flex justify-center">
+                    <p>=</p>
+                </div>
+
+                <!-- Return Conversion Box -->
+                <div class="inputTwoContainer w-1/2 px-2">
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
+                        id="result" type="number" placeholder="wait for result">
+                    <div id="selectTypeTwo">
+                        <!-- New Options JS Generated -->
+                        <select name="unitType" id="resultType" class="w-full"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clear Button -->
+        <div class="button text-center">
+            <button id="clear"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Clear</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
