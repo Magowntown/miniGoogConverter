@@ -9,6 +9,7 @@ const clearButton = document.querySelector("#clear");
 // Define conversion rates for the measurement options
 const conversionRates = {
   length: {
+    base: "meter",
     values: {
       meter: {
         toBase: (val) => val,
@@ -58,6 +59,7 @@ const conversionRates = {
   },
 
   fuel: {
+    base: "mpg",
     values: {
       mpg: {
         toBase: (val) => val,
@@ -75,6 +77,7 @@ const conversionRates = {
   },
 
   storage: {
+    base: "byte",
     values: {
       byte: {
         toBase: (val) => val,
@@ -100,6 +103,7 @@ const conversionRates = {
   },
 
   temperature: {
+    base: "celsius",
     values: {
       celsius: {
         toBase: (val) => val,
@@ -114,191 +118,198 @@ const conversionRates = {
         fromBase: (val) => val + 273.15,
       },
     },
+  },
 
-    mass: {
-      values: {
-        kilogram: {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        gram: {
-          toBase: (val) => val / 1000,
-          fromBase: (val) => val * 1000,
-        },
-        milligram: {
-          toBase: (val) => val / 1e6,
-          fromBase: (val) => val * 1e6,
-        },
-        metricton: {
-          toBase: (val) => val * 1000,
-          fromBase: (val) => val / 1000,
-        },
-        longton: {
-          toBase: (val) => val * 1016.05,
-          fromBase: (val) => val / 1016.05,
-        },
-        shortton: {
-          toBase: (val) => val * 907.185,
-          fromBase: (val) => val / 907.185,
-        },
-        pound: {
-          toBase: (val) => val * 0.453592,
-          fromBase: (val) => val / 0.453592,
-        },
-        ounce: {
-          toBase: (val) => val * 0.0283495,
-          fromBase: (val) => val / 0.0283495,
-        },
+  mass: {
+    base: "kilogram",
+    values: {
+      kilogram: {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      gram: {
+        toBase: (val) => val / 1000,
+        fromBase: (val) => val * 1000,
+      },
+      milligram: {
+        toBase: (val) => val / 1e6,
+        fromBase: (val) => val * 1e6,
+      },
+      metricton: {
+        toBase: (val) => val * 1000,
+        fromBase: (val) => val / 1000,
+      },
+      longton: {
+        toBase: (val) => val * 1016.05,
+        fromBase: (val) => val / 1016.05,
+      },
+      shortton: {
+        toBase: (val) => val * 907.185,
+        fromBase: (val) => val / 907.185,
+      },
+      pound: {
+        toBase: (val) => val * 0.453592,
+        fromBase: (val) => val / 0.453592,
+      },
+      ounce: {
+        toBase: (val) => val * 0.0283495,
+        fromBase: (val) => val / 0.0283495,
       },
     },
+  },
 
-    speed: {
-      values: {
-        "m/s": {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        "km/h": {
-          toBase: (val) => val / 3.6,
-          fromBase: (val) => val * 3.6,
-        },
-        "mile/h": {
-          toBase: (val) => val / 2.237,
-          fromBase: (val) => val * 2.237,
-        },
-        knot: {
-          toBase: (val) => val / 1.944,
-          fromBase: (val) => val * 1.944,
-        },
+  speed: {
+    base: "m/s",
+    values: {
+      "m/s": {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      "km/h": {
+        toBase: (val) => val / 3.6,
+        fromBase: (val) => val * 3.6,
+      },
+      "mile/h": {
+        toBase: (val) => val / 2.237,
+        fromBase: (val) => val * 2.237,
+      },
+      knot: {
+        toBase: (val) => val / 1.944,
+        fromBase: (val) => val * 1.944,
       },
     },
+  },
 
-    area: {
-      values: {
-        "m²": {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        "km²": {
-          toBase: (val) => val * 1e6,
-          fromBase: (val) => val / 1e6,
-        },
-        hectare: {
-          toBase: (val) => val * 1e4,
-          fromBase: (val) => val / 1e4,
-        },
-        acre: {
-          toBase: (val) => val * 4046.86,
-          fromBase: (val) => val / 4046.86,
-        },
+  area: {
+    base: "m²",
+    values: {
+      "m²": {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      "km²": {
+        toBase: (val) => val * 1e6,
+        fromBase: (val) => val / 1e6,
+      },
+      hectare: {
+        toBase: (val) => val * 1e4,
+        fromBase: (val) => val / 1e4,
+      },
+      acre: {
+        toBase: (val) => val * 4046.86,
+        fromBase: (val) => val / 4046.86,
       },
     },
+  },
 
-    volume: {
-      values: {
-        litre: {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        ml: {
-          toBase: (val) => val / 1000,
-          fromBase: (val) => val * 1000,
-        },
-        gallon: {
-          toBase: (val) => val / 3.78541,
-          fromBase: (val) => val * 3.78541,
-        },
-        quart: {
-          toBase: (val) => val / 0.946353,
-          fromBase: (val) => val * 0.946353,
-        },
-        pint: {
-          toBase: (val) => val / 0.473176,
-          fromBase: (val) => val * 0.473176,
-        },
-        cup: {
-          toBase: (val) => val / 0.236588,
-          fromBase: (val) => val * 0.236588,
-        },
-        fluidounce: {
-          toBase: (val) => val / 0.0295735,
-          fromBase: (val) => val * 0.0295735,
-        },
+  volume: {
+    base: "litre",
+    values: {
+      litre: {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      ml: {
+        toBase: (val) => val / 1000,
+        fromBase: (val) => val * 1000,
+      },
+      gallon: {
+        toBase: (val) => val / 3.78541,
+        fromBase: (val) => val * 3.78541,
+      },
+      quart: {
+        toBase: (val) => val / 0.946353,
+        fromBase: (val) => val * 0.946353,
+      },
+      pint: {
+        toBase: (val) => val / 0.473176,
+        fromBase: (val) => val * 0.473176,
+      },
+      cup: {
+        toBase: (val) => val / 0.236588,
+        fromBase: (val) => val * 0.236588,
+      },
+      fluidounce: {
+        toBase: (val) => val / 0.0295735,
+        fromBase: (val) => val * 0.0295735,
       },
     },
+  },
 
-    pressure: {
-      values: {
-        pa: {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        kpa: {
-          toBase: (val) => val * 1000,
-          fromBase: (val) => val / 1000,
-        },
-        mpa: {
-          toBase: (val) => val * 1e6,
-          fromBase: (val) => val / 1e6,
-        },
-        bar: {
-          toBase: (val) => val * 1e5,
-          fromBase: (val) => val / 1e5,
-        },
-        torr: {
-          toBase: (val) => val * 133.322,
-          fromBase: (val) => val / 133.322,
-        },
-        psi: {
-          toBase: (val) => val * 6894.76,
-          fromBase: (val) => val / 6894.76,
-        },
+  pressure: {
+    base: "pa",
+    values: {
+      pa: {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      kpa: {
+        toBase: (val) => val * 1000,
+        fromBase: (val) => val / 1000,
+      },
+      mpa: {
+        toBase: (val) => val * 1e6,
+        fromBase: (val) => val / 1e6,
+      },
+      bar: {
+        toBase: (val) => val * 1e5,
+        fromBase: (val) => val / 1e5,
+      },
+      torr: {
+        toBase: (val) => val * 133.322,
+        fromBase: (val) => val / 133.322,
+      },
+      psi: {
+        toBase: (val) => val * 6894.76,
+        fromBase: (val) => val / 6894.76,
       },
     },
+  },
 
-    energy: {
-      values: {
-        joule: {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        kj: {
-          toBase: (val) => val * 1000,
-          fromBase: (val) => val / 1000,
-        },
-        calorie: {
-          toBase: (val) => val * 4.184,
-          fromBase: (val) => val / 4.184,
-        },
-        kcal: {
-          toBase: (val) => val * 4184,
-          fromBase: (val) => val / 4184,
-        },
-        btu: {
-          toBase: (val) => val * 1055.06,
-          fromBase: (val) => val / 1055.06,
-        },
+  energy: {
+    base: "joule",
+    values: {
+      joule: {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      kj: {
+        toBase: (val) => val * 1000,
+        fromBase: (val) => val / 1000,
+      },
+      calorie: {
+        toBase: (val) => val * 4.184,
+        fromBase: (val) => val / 4.184,
+      },
+      kcal: {
+        toBase: (val) => val * 4184,
+        fromBase: (val) => val / 4184,
+      },
+      btu: {
+        toBase: (val) => val * 1055.06,
+        fromBase: (val) => val / 1055.06,
       },
     },
+  },
 
-    density: {
-      values: {
-        "kg/m³": {
-          toBase: (val) => val,
-          fromBase: (val) => val,
-        },
-        "g/cm³": {
-          toBase: (val) => val * 1000,
-          fromBase: (val) => val / 1000,
-        },
-        "g/ml": {
-          toBase: (val) => val * 1000,
-          fromBase: (val) => val / 1000,
-        },
-        "lb/ft³": {
-          toBase: (val) => val * 16.0185,
-          fromBase: (val) => val / 16.0185,
-        },
+  density: {
+    base: "kg/m³",
+    values: {
+      "kg/m³": {
+        toBase: (val) => val,
+        fromBase: (val) => val,
+      },
+      "g/cm³": {
+        toBase: (val) => val * 1000,
+        fromBase: (val) => val / 1000,
+      },
+      "g/ml": {
+        toBase: (val) => val * 1000,
+        fromBase: (val) => val / 1000,
+      },
+      "lb/ft³": {
+        toBase: (val) => val * 16.0185,
+        fromBase: (val) => val / 16.0185,
       },
     },
   },
