@@ -5,52 +5,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <title>Google Converter Clone</title>
 </head>
 
-<body class="bg-gray-200 h-screen flex items-center justify-center">
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
 
-    <div id="windowContainer" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xl">
+    <div id="windowContainer" class="bg-gray-900 shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-full max-w-xl">
         <div id="header" class="mx-auto text-center">
-            <h1 class="flex-auto">Google Converter Clone</h1>
+            <h1 class="text-lg font-bold">Google Converter Clone</h1>
         </div>
 
-        <div id="converterBox" class="flex flex-col w-full">
+        <div id="converterBox" class="flex flex-col w-full mt-4">
             <div id="dropdown" class="w-full">
-                <select name="measurement" id="measurementOption" for="inputSelect">
+                <label for="measurementOptions" class="block text-sm font-medium text-gray-300">Choose a
+                    measurement</label>
+                <select name="measurement" id="measurementOptions"
+                    class="mt-1 block w-full py-2 px-3 border border-gray-700 bg-gray-800 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <!-- Options... -->
+                    <option selected disabled hidden value=""></option>
                     <option id="lengthOption" value="length">Length</option>
                     <option id="FuelOption" value="fuel">Fuel Economy</option>
                     <option id="digitalOption" value="storage">Digital Storage</option>
+                    <option id="temperatureOption" value="temperature">Temperature</option>
+                    <option id="massOption" value="mass">Mass</option>
+                    <option id="speedOption" value="speed">Speed</option>
+                    <option id="areaOption" value="area">Area</option>
+                    <option id="volumeOption" value="volume">Volume</option>
+                    <option id="pressureOption" value="pressure">Pressure</option>
+                    <option id="energyOption" value="energy">Energy</option>
+                    <option id="densityOption" value="density">Density</option>
                 </select>
             </div>
-            <div id="converters" class="flex justify-evenly w-full">
+
+            <div id="converters" class="flex justify-between w-full mt-4">
                 <div class="inputOneContainer w-1/2 px-2">
-                    <input
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
-                        id="inputOne" type="number" placeholder="Enter a value">
-                    <div>
-                        <select name="unitType" id="unitTypeOne" class="w-full"></select>
+                    <input id="input" type="number" placeholder="Enter a value"
+                        class="block w-full py-2 px-3 border border-gray-700 bg-gray-800 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <div id="selectTypeOne" class="mt-2">
+                        <select name="inputType" id="inputType"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-700 bg-gray-800 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></select>
+                        <option selected disabled hidden value=""></option>
                     </div>
                 </div>
-                <div id="equalSign" class="flex justify-center">
-                    <p>=</p>
+
+                <div id="equalSign" class="flex justify-center w-4">
+                    <p class="text-xl font-semibold">=</p>
                 </div>
 
                 <div class="inputTwoContainer w-1/2 px-2">
-                    <input
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center"
-                        id="inputTwo" type="number" placeholder="wait for result">
-                    <div>
-                        <select name="unitType" id="unitTypeTwo" class="w-full"></select>
+                    <input id="result" type="number" placeholder="wait for result"
+                        class="block w-full py-2 px-3 border border-gray-700 bg-gray-800 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <div id="selectTypeTwo" class="mt-2">
+                        <select name="unitType" id="resultType"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-700 bg-gray-800 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></select>
+                        <option selected disabled hidden value=""></option>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="button text-center">
+        <div class="button text-center mt-4">
             <button id="clear"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Clear</button>
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Clear</button>
         </div>
     </div>
 
