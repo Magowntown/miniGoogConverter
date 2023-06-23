@@ -370,7 +370,13 @@ measurementOptions.addEventListener("change", (event) => {
       inputType.innerHTML += `<option value="${unit}">${unit}</option>`;
       resultType.innerHTML += `<option value="${unit}">${unit}</option>`;
     }
+    input.value = "";
+    result.value = "";
   }
+
+  // Call the conversion functions to update the outputs
+  convertInputToResult();
+  convertResultToInput();
 });
 
 // Convert the input value to the result value based on the selected types
